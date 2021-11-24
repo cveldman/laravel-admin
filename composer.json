@@ -1,0 +1,34 @@
+{
+    "name": "veldman/laravel-admin",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Corné Veldman",
+            "email": "cveldman@hotmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Veldman\\Admin\\": "src/",
+            "Veldman\\Admin\\Factories\\": "database/factories/",
+            "Veldman\\Admin\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Veldman\\Admin\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Veldman\\Admin\\AdminServiceProvider"
+            ]
+        }
+    }
+}
