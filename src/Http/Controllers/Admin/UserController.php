@@ -2,7 +2,7 @@
 
 namespace Veldman\Admin\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Veldman\Admin\Http\Controllers\Controller;
 use Veldman\Admin\Models\User;
 use Veldman\Admin\Http\Requests\StoreUserRequest;
 use Veldman\Admin\Http\Requests\UpdateUserRequest;
