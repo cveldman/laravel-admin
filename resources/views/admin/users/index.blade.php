@@ -2,42 +2,33 @@
 
 @section('content')
 
-    <a href="{{ route('admin.users.create') }}" class="btn btn-primary float-end">{{ __('Create') }}</a>
+        <h1 class="text-2xl font-semibold text-gray-900">Users</h1>
 
-    <div class="card">
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">{{ __('Name') }}</th>
-                        <th scope="col">{{ __('Email') }}</th>
-                        <th scope="col">{{ __('Created At') }}</th>
-                        <th scope="col">{{ __('Updated At') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if(count($users) > 0)
-                        @foreach($users as $user)
-                            <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ $user->created_at }}</td>
-                                <td>{{ $user->updated_at }}</td>
-                                <td>
-                                    <a href="{{ route('admin.users.edit', $user) }}">{{ __('Update') }}</a>
-                                    <a href="{{ route('admin.users.destroy', $user) }}">{{ __('Delete') }}</a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="5" class="align-middle text-center" style="height: 250px;">{{ __('table.empty') }}</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
+        <x-data-table :datatable="$users">
+            <x-slot name="columns">
+                test
+            </x-slot>
+            @foreach($users as $user)
+                <x-row>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <a href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a>
+                    </td>
 
-        </div>
-    </div>
+                    <x-cell>{{ $user->email }}</x-cell>
+
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        @can('update', $user)
+                            <a href="{{ route('admin.users.edit', $user) }}"
+                               class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        @endcan
+
+                        @can('delete', $user)
+                            <a href="{{ route('admin.users.edit', $user) }}"
+                               class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        @endcan
+                    </td>
+                </x-row>
+            @endforeach
+        </x-data-table>
 
 @endsection

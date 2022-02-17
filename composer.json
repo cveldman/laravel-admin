@@ -9,8 +9,15 @@
             "email": "cveldman@hotmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./../**"
+        }
+    ],
     "require": {
-        "laravel/framework": "^8.0"
+        "laravel/framework": "^8.0",
+        "veldman/laravel-components": "dev-master"
     },
     "autoload": {
         "psr-4": {
