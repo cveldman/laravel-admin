@@ -15,7 +15,7 @@
         @livewireStyles
     </head>
     <body class="h-full">
-        <div>
+        <div id="app">
             <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
             <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true">
                 <!--
