@@ -8,9 +8,9 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/admin.js') }}" defer></script>
 
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+        <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
 
         @livewireStyles
     </head>
