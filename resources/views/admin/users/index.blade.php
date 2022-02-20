@@ -6,7 +6,8 @@
 
         <x-data-table :datatable="$users">
             <x-slot name="columns">
-                test
+                <x-dcolumn order="name">Name</x-dcolumn>
+                <x-dcolumn order="email">Email</x-dcolumn>
             </x-slot>
             @foreach($users as $user)
                 <x-row>
