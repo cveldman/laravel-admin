@@ -1,9 +1,9 @@
 <?php
 
-namespace Veldman\Admin\Http\Controllers;
+namespace Veldman\Admin\Http\Controllers\App;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Veldman\Admin\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {

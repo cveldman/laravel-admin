@@ -11,13 +11,14 @@
         <script src="{{ mix('js/admin.js') }}" defer></script>
 
         <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
+        <script src="//unpkg.com/alpinejs" defer></script>
 
         @livewireStyles
     </head>
     <body class="h-full">
-        <div id="app">
+        <div x-data="{ open: false }" id="app" >
             <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-            <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true">
+            <div x-show="open" class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true" style="display: none;">
                 <!--
                   Off-canvas menu overlay, show/hide based on off-canvas menu state.
 
@@ -52,7 +53,7 @@
                         To: "opacity-0"
                     -->
                     <div class="absolute top-0 right-0 -mr-12 pt-2">
-                        <button type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <button x-on:click="open = ! open" type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span class="sr-only">Close sidebar</span>
                             <!-- Heroicon name: outline/x -->
                             <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -146,7 +147,7 @@
             </div>
             <div class="md:pl-64 flex flex-col flex-1">
                 <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
-                    <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
+                    <button x-on:click="open = ! open" type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden">
                         <span class="sr-only">Open sidebar</span>
                         <!-- Heroicon name: outline/menu-alt-2 -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
