@@ -8,6 +8,7 @@
             <x-slot name="columns">
                 <x-dcolumn order="name">Name</x-dcolumn>
                 <x-dcolumn order="email">Email</x-dcolumn>
+                <x-dcolumn></x-dcolumn>
             </x-slot>
             @foreach($users as $user)
                 <x-row>
