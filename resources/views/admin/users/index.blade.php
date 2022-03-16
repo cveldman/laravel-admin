@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <x-data-table :datatable="$users">
+    <x-data-table :datatable="$users" class="mt-8">
         <x-slot name="columns">
             <x-dcolumn order="name">Name</x-dcolumn>
             <x-dcolumn order="email">Email</x-dcolumn>
