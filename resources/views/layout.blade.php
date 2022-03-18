@@ -11,7 +11,6 @@
         <script src="{{ mix('js/admin.js') }}" defer></script>
 
         <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
-        <script src="//unpkg.com/alpinejs" defer></script>
 
         @livewireStyles
     </head>
