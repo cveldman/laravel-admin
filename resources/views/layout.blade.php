@@ -10,6 +10,7 @@
 
         <script src="{{ mix('js/admin.js') }}" defer></script>
 
+        <link rel="icon" href="data:,">
         <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
 
         @livewireStyles
