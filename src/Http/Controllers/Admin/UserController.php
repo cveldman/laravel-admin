@@ -11,8 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::search(['name', 'email'])
-            ->paginate();
+        $users = User::datatable(['name', 'email']);
 
         return view('admin::admin.users.index', compact('users'));
     }
@@ -41,15 +40,15 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user = $user->update($request->validated());
+        $user->update($request->validated());
 
-        return redirect()->route('admin.customers.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->back();
+        return redirect()->route('admin.users.index');
     }
 }

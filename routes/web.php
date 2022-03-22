@@ -5,8 +5,13 @@ use Veldman\Admin\Http\Controllers\Admin\UserController;
 use Veldman\Admin\Http\Controllers\App\LoginController;
 
 Route::middleware('web')->prefix('admin')->as('admin.')->group(function () {
-    Route::resource('users', UserController::class);
+    Route::middleware('auth')->group(function() {
+        Route::view('/', 'admin::admin.dashboard.index');
+        Route::resource('users', UserController::class);
+    });
+
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+    Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 
-Route::get('/admin/login', [LoginController::class, 'form']);
-Route::post('/admin/login', [LoginController::class, 'login']);

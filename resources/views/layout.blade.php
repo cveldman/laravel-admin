@@ -137,6 +137,10 @@
                                 </svg>
                             </button>
 
+                            <x-form method="delete" action="{{ route('admin.logout') }}">
+                                <x-button type="submit">Logout</x-button>
+                            </x-form>
+
                             <!-- Profile dropdown -->
                             <div class="ml-3 relative">
                                 <div>

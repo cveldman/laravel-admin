@@ -2,33 +2,36 @@
 
 namespace Veldman\Admin\Http\Controllers\App;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Veldman\Admin\Http\Controllers\Controller;
+use Veldman\Admin\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
-    public function __construct()
+    public function create()
     {
-        $this->middleware('guest')->except('logout');
+        return view('admin::app.login');
     }
 
-    public function form()
+    public function store(LoginRequest $request)
     {
-        return view('admin::login');
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect('/admin');
     }
 
-    public function login(Request $request)
+    public function destroy(Request $request)
     {
-        if(Auth::guard()->attempt($request->only('email', 'password'), $request->filled('remember'))) {
-            return redirect('/admin');
-        }
+        Auth::logout();
 
-        return redirect('/admin/login');
-    }
+        $request->session()->invalidate();
 
-    public function logout()
-    {
+        $request->session()->regenerateToken();
 
+        return redirect('/');
     }
 }
