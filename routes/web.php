@@ -14,4 +14,3 @@ Route::middleware('web')->prefix('admin')->as('admin.')->group(function () {
     Route::post('/login', [LoginController::class, 'store']);
     Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
-
