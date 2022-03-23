@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/admin');
+        return redirect()->intended('/admin');
     }
 
     public function destroy(Request $request)
@@ -29,18 +29,8 @@ class LoginController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect()->intended($this->redirectPath());
-    }
-
-    public function redirectPath()
-    {
-        if (method_exists($this, 'redirectTo')) {
-            return $this->redirectTo();
-        }
-
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/dashboard';
+        return redirect()->intended();
     }
 }
