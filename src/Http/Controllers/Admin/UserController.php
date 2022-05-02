@@ -23,7 +23,7 @@ class UserController extends Controller
     {
         $this->authorize('viewAny', $this->model);
 
-        $users = $this->scopedQuery()->with('roles')->paginate();
+        $users = $this->model::with('roles')->paginate();
 
         return view('admin::admin.users.index', compact('users'));
     }
@@ -58,7 +58,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = $this->scopedQuery()->findOrFail($id);
+        $user = $this->model::findOrFail($id);
 
         $this->authorize('view', $user);
 
@@ -67,7 +67,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = $this->scopedQuery()->findOrFail($id);
+        $user = $this->model::findOrFail($id);
 
         $this->authorize('update', $user);
 
@@ -79,7 +79,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, $id)
     {
-        $user = $this->scopedQuery()->findOrFail($id);
+        $user = $this->model::findOrFail($id);
 
         $this->authorize('update', $user);
 
@@ -93,26 +93,12 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = $this->scopedQuery()->findOrFail($id);
+        $user = $this->model::findOrFail($id);
 
         $this->authorize('delete', $user);
 
         $user->delete();
 
         return redirect()->route('admin.users.index');
-    }
-
-    /**
-     * Tijdelijke fix voordat tenancy package verbeterd is
-     */
-    private function scopedQuery()
-    {
-        $key = config('tenancy.key', 'tenant_id');
-
-        if(Schema::hasColumn((new $this->model)->getTable(), $key)) {
-            return $this->model::where($key, '=', auth()->user()->$key);
-        }
-
-        return $this->model::query();
     }
 }
