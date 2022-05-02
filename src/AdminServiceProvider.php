@@ -4,6 +4,7 @@ namespace Veldman\Admin;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Ui\UiCommand;
 use Veldman\Admin\View\Components\Error;
 use Veldman\Admin\View\Components\Form;
 use Veldman\Admin\View\Components\Input;
@@ -27,6 +28,14 @@ class AdminServiceProvider extends ServiceProvider
             // $this->commands([InstallCommand::class]);
 
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+            UiCommand::macro('tall', function (UiCommand $command) {
+                \Veldman\Admin\Presets\Tailwind::install();
+                \Veldman\Admin\Presets\Vue::install();
+
+                $this->info('Vue scaffolding installed successfully.');
+                $this->comment('Please run "npm install && npm run dev" to compile your fresh scaffolding.');
+            });
         }
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
@@ -40,5 +49,7 @@ class AdminServiceProvider extends ServiceProvider
         Blade::component('select', Select::class);
         Blade::component('label', Label::class);
         Blade::component('error', Error::class);
+
+
     }
 }
