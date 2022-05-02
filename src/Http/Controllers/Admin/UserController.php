@@ -3,6 +3,7 @@
 namespace Veldman\Admin\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Veldman\Admin\Http\Controllers\Controller;
 use Veldman\Admin\Http\Requests\StoreUserRequest;
 use Veldman\Admin\Http\Requests\UpdateUserRequest;
@@ -22,7 +23,7 @@ class UserController extends Controller
     {
         $this->authorize('viewAny', $this->model);
 
-        $users = $this->model::paginate();
+        $users = $this->scopedQuery()->with('roles')->paginate();
 
         return view('admin::admin.users.index', compact('users'));
     }
@@ -57,7 +58,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = $this->model::findOrFail($id);
+        $user = $this->scopedQuery()->findOrFail($id);
 
         $this->authorize('view', $user);
 
@@ -66,7 +67,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = $this->model::findOrFail($id);
+        $user = $this->scopedQuery()->findOrFail($id);
 
         $this->authorize('update', $user);
 
@@ -78,7 +79,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, $id)
     {
-        $user = $this->model::findOrFail($id);
+        $user = $this->scopedQuery()->findOrFail($id);
 
         $this->authorize('update', $user);
 
@@ -92,12 +93,26 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = $this->model::findOrFail($id);
+        $user = $this->scopedQuery()->findOrFail($id);
 
         $this->authorize('delete', $user);
 
         $user->delete();
 
         return redirect()->route('admin.users.index');
+    }
+
+    /**
+     * Tijdelijke fix voordat tenancy package verbeterd is
+     */
+    private function scopedQuery()
+    {
+        $key = config('tenancy.key');
+
+        if(Schema::hasColumn((new $this->model)->getTable(), $key)) {
+            return $this->model::where($key, '=', auth()->user()->$key);
+        }
+
+        return $this->model::query();
     }
 }
