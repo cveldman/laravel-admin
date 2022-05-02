@@ -50,9 +50,9 @@
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                                     @can('update', $user)
                                         <a href="{{ route('admin.users.edit', $user) }}"
-                                           class="text-indigo-600 hover:text-indigo-900">{{ __("Edit") }}</a>
+                                           class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                                     @endcan
-
+                                    &nbsp;
                                     @can('delete', $user)
                                         <a href="{{ route('admin.users.destroy', $user) }}"
                                            class="text-indigo-600 hover:text-indigo-900">{{ __('Delete') }}</a>
