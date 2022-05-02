@@ -3,6 +3,6 @@
 return [
 
     'title' => 'Users',
-    'description' => ''
+    'description' => 'A list of all the users in your account including their name, title, email and role.'
 
 ];

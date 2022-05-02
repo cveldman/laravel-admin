@@ -2,4 +2,6 @@
 
 @section('content')
 
+    {{ auth()->user()->name }}
+
 @endsection

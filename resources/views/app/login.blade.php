@@ -19,8 +19,8 @@
         <x-form method="post">
             @csrf
 
-            <x-input type="text" name="email"/>
-            <x-input type="password" name="password"/>
+            <x-input type="text" name="email" autocomplete="username"/>
+            <x-input type="password" name="password" autocomplete="password"/>
 
             <button type="submit">Login</button>
         </x-form>

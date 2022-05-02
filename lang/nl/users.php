@@ -3,6 +3,6 @@
 return [
 
     'title' => 'Gebruikers',
-    'description' => ''
+    'description' => 'Een lijst met alle gebruikers in uw account, inclusief hun naam, titel, e-mailadres en rol.'
 
 ];

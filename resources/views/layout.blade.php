@@ -138,7 +138,7 @@
                             </button>
 
                             <x-form method="delete" action="{{ route('admin.logout') }}">
-                                <x-button type="submit">Logout</x-button>
+                                <button type="submit">Logout</button>
                             </x-form>
 
                             <!-- Profile dropdown -->
