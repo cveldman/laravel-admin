@@ -4,8 +4,6 @@ namespace Veldman\Admin\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Veldman\Admin\AdminServiceProvider;
-use Veldman\Components\ComponentsServiceProvider;
-use Veldman\DataTable\DataTableServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -21,9 +19,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            AdminServiceProvider::class,
-            ComponentsServiceProvider::class,
-            DataTableServiceProvider::class
+            AdminServiceProvider::class
         ];
     }
 
