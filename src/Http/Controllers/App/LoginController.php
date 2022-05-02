@@ -2,7 +2,6 @@
 
 namespace Veldman\Admin\Http\Controllers\App;
 
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Veldman\Admin\Http\Controllers\Controller;
@@ -10,8 +9,14 @@ use Veldman\Admin\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('destroy');
+    }
+
     public function create()
     {
+
         return view('admin::app.login');
     }
 
