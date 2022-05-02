@@ -107,7 +107,7 @@ class UserController extends Controller
      */
     private function scopedQuery()
     {
-        $key = config('tenancy.key');
+        $key = config('tenancy.key', 'tenant_id');
 
         if(Schema::hasColumn((new $this->model)->getTable(), $key)) {
             return $this->model::where($key, '=', auth()->user()->$key);
