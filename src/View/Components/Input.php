@@ -9,10 +9,11 @@ class Input extends Component
     public $type;
     public $name;
 
-    public function __construct($type = 'text', $name)
+    public function __construct($type = 'text', $name, $value = null)
     {
         $this->type = $type;
         $this->name = $name;
+        $this->value = old($name, $value);
     }
 
     public function render()

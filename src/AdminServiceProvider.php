@@ -9,6 +9,9 @@ use Veldman\Admin\View\Components\Form;
 use Veldman\Admin\View\Components\Input;
 use Veldman\Admin\View\Components\Label;
 use Veldman\Admin\View\Components\Select;
+use Veldman\Admin\View\Components\Table;
+use Veldman\Admin\View\Components\TD;
+use Veldman\Admin\View\Components\TH;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,12 @@ class AdminServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'admin');
 
+        // Table components
+        Blade::component('table', Table::class);
+        Blade::component('th', TH::class);
+        Blade::component('td', TD::class);
+
+        // Form components
         Blade::component('form', Form::class);
         Blade::component('input', Input::class);
         Blade::component('select', Select::class);

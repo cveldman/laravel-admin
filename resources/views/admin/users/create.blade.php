@@ -15,14 +15,26 @@
                         <div class="mt-6 grid grid-cols-4 gap-6">
                             <div class="col-span-4 sm:col-span-2">
                                 <x-label for="name" class="mb-1">{{ __('Name') }}</x-label>
-                                <x-input name="name" :value="$user->name" autocomplete="name" autofocus/>
+                                <x-input name="name" autocomplete="name" autofocus/>
                                 <x-error name="name"/>
                             </div>
 
                             <div class="col-span-4 sm:col-span-2">
                                 <x-label for="email" class="mb-1">{{ __('Email address') }}</x-label>
-                                <x-input name="email" :value="$user->email" autocomplete="email" autofocus/>
+                                <x-input name="email" autocomplete="email"/>
                                 <x-error name="email"/>
+                            </div>
+
+                            <div class="col-span-4 sm:col-span-2">
+                                <x-label for="password" class="mb-1">{{ __('Password') }}</x-label>
+                                <x-input type="password" name="password"/>
+                                <x-error name="password"/>
+                            </div>
+
+                            <div class="col-span-4 sm:col-span-2">
+                                <x-label for="password_confirmation" class="mb-1">{{ __('Password') }}</x-label>
+                                <x-input type="password" name="password_confirmation"/>
+                                <x-error name="password_confirmation"/>
                             </div>
 
                             <div class="col-span-4 sm:col-span-2">
