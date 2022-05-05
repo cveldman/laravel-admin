@@ -71,10 +71,10 @@ class UserController extends Controller
 
         $this->authorize('update', $user);
 
-        $roles = Role::pluck('name', 'id');
-        $permissions = Permission::pluck('name', 'id');
+        $roles = Role::all(); // pluck('name', 'id');
+        $permissions = Permission::all(); // pluck('name', 'id');
 
-        return view('admin::admin.users.edit', compact('roles', 'permissions', 'user'));
+        return view('admin::admin.users.edit2', compact('roles', 'permissions', 'user'));
     }
 
     public function update(UpdateUserRequest $request, $id)
