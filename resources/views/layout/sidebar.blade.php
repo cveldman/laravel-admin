@@ -8,7 +8,7 @@
         <div class="mt-5 flex-1 flex flex-col">
             <nav class="flex-1 px-2 pb-4 space-y-1">
                 @foreach(app('sidebar')->items as $key => $value)
-                    <a href="{{ route($key) }}" class="@if(Request::is([substr(route($key, [], false), 1), substr(route($key, [], false), 1) . '/*'])) bg-indigo-800 text-white @else text-indigo-100 hover:bg-indigo-600 @endif group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="{{ route($key) }}" class="@if(Request::is(route($key) == '/admin' ? [substr(route($key, [], false), 1), substr(route($key, [], false), 1) . '/*'] : substr(route($key, [], false), 1))) bg-indigo-800 text-white @else text-indigo-100 hover:bg-indigo-600 @endif group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <!-- Heroicon name: outline/home -->
                         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg"
                              fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
