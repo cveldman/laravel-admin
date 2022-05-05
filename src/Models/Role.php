@@ -11,6 +11,8 @@ class Role extends Model
 {
     use HasFactory, HasPermissions;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'slug'

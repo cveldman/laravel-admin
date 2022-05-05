@@ -10,10 +10,22 @@ class Permission extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'name',
         'slug'
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function getDisabledAttribute($value)
+    {
+        return $this->roles->map(function($item) { return (string) $item->id; });
+    }
 
     protected static function newFactory()
     {
