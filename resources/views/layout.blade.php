@@ -13,7 +13,11 @@
         <link rel="icon" href="data:,">
         <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
 
+        @stack('styles')
+
         <script src="//unpkg.com/alpinejs" defer></script>
+
+        @stack('scripts')
     </head>
     <body class="h-full">
         <div x-data="{ open: false }">
