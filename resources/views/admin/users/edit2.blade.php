@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div x-data='{ roles: @json($user->roles->map(function($item) { return (string) $item->id; })) }' class="shadow sm:rounded-md sm:overflow-hidden mt-4">
+                <div x-data='{ roles: @json(old('roles', $user->roles->map(function($item) { return (string) $item->id; }))) }' class="shadow sm:rounded-md sm:overflow-hidden mt-4">
                     <div class="bg-white py-6 px-4 sm:p-6">
                         <div>
                             <h2 id="payment-details-heading" class="text-lg leading-6 font-medium text-gray-900">Rollen & permissies</h2>
