@@ -8,8 +8,9 @@ class Input extends Component
 {
     public $type;
     public $name;
+    public $value;
 
-    public function __construct($type = 'text', $name, $value = null)
+    public function __construct($name, $type = 'text', $value = null)
     {
         $this->type = $type;
         $this->name = $name;
