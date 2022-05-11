@@ -6,8 +6,11 @@ class Sidebar
 {
     public $items = [];
 
-    public function route($route, $name) {
-        $this->items[$route] = $name;
+    public function route($route, $name, $icon = null) {
+        $this->items[$route] = [
+            'name' => $name,
+            'icon' => $icon
+        ];
 
         return $this;
     }
