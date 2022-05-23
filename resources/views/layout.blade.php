@@ -8,15 +8,12 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <script src="{{ mix('js/admin.js') }}" defer></script>
-
         <link rel="icon" href="data:,">
         <link href="{{ mix('css/admin.css') }}" rel="stylesheet">
-
         @stack('styles')
 
-        <script src="//unpkg.com/alpinejs" defer></script>
-
+        <script src="{{ mix('js/admin.js') }}" defer></script>
+        @livewireStyles
         @stack('scripts')
     </head>
     <body class="h-full">
@@ -37,5 +34,7 @@
                 </main>
             </div>
         </div>
+
+        @livewireScripts
     </body>
 </html>
