@@ -52,7 +52,7 @@ class AdminServiceProvider extends ServiceProvider
         Blade::component('label', Label::class);
         Blade::component('error', Error::class);
 
-        Blade::component('item', Item::class, 'sidebar');
-        Blade::component('group', Group::class, 'sidebar');
+        Blade::component('sidebar.item', Item::class);
+        Blade::component('sidebar.group', Group::class);
     }
 }
