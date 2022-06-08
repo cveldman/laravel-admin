@@ -6,11 +6,13 @@ use Illuminate\View\Component;
 
 class Item extends Component
 {
+    public $href;
     public $icon;
     public $policy;
 
-    public function __construct($icon = null, $policy = null)
+    public function __construct($href = '#', $icon = null, $policy = null)
     {
+        $this->href = $href;
         $this->icon = $icon;
         $this->policy = $policy;
     }
