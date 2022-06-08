@@ -9,6 +9,8 @@ use Veldman\Admin\View\Components\Form;
 use Veldman\Admin\View\Components\Input;
 use Veldman\Admin\View\Components\Label;
 use Veldman\Admin\View\Components\Select;
+use Veldman\Admin\View\Components\Sidebar\Group;
+use Veldman\Admin\View\Components\Sidebar\Item;
 use Veldman\Admin\View\Components\Table;
 use Veldman\Admin\View\Components\TD;
 use Veldman\Admin\View\Components\TH;
@@ -49,5 +51,8 @@ class AdminServiceProvider extends ServiceProvider
         Blade::component('select', Select::class);
         Blade::component('label', Label::class);
         Blade::component('error', Error::class);
+
+        Blade::component('item', Item::class, 'sidebar');
+        Blade::component('group', Group::class, 'sidebar');
     }
 }
