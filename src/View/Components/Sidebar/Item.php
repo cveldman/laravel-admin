@@ -2,6 +2,7 @@
 
 namespace Veldman\Admin\View\Components\Sidebar;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\View\Component;
 
 class Item extends Component
@@ -15,6 +16,13 @@ class Item extends Component
         $this->href = $href;
         $this->icon = $icon;
         $this->policy = $policy;
+    }
+
+    public function isCurrent()
+    {
+        return Request::is(parse_url($this->href, PHP_URL_PATH) != '/admin'
+            ? [substr(parse_url($this->href, PHP_URL_PATH), 1), substr(parse_url($this->href, PHP_URL_PATH), 1) . '/*']
+            : substr(parse_url($this->href, PHP_URL_PATH), 1));
     }
 
     public function render()
