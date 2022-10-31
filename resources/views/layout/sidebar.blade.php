@@ -10,12 +10,12 @@
                 @foreach(app('sidebar')->items as $key => $value)
                     @isset($value['policy'])
                         @can($value['policy'][0], $value['policy'][1])
-                            <a href="{{ route($key) }}" class="@if(Request::is(route($key) == '/admin' ? [substr(route($key, [], false), 1), substr(route($key, [], false), 1) . '/*'] : substr(route($key, [], false), 1))) bg-indigo-800 text-white @else text-indigo-100 hover:bg-indigo-600 @endif group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                            <a href="{{ route($key) }}" class="@if(Request::is(route($key) == '/admin' ? [substr(route($key, [], false), 1), substr(route($key, [], false), 1) . '/*'] : substr(route($key, [], false), 1))) bg-indigo-800 text-white @else text-white hover:bg-indigo-600 @endif group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                 {!! $value['icon'] !!} {{ $value['name'] }}
                             </a>
                         @endcan
                     @else
-                        <a href="{{ route($key) }}" class="@if(Request::is(route($key) == '/admin' ? [substr(route($key, [], false), 1), substr(route($key, [], false), 1) . '/*'] : substr(route($key, [], false), 1))) bg-indigo-800 text-white @else text-indigo-100 hover:bg-indigo-600 @endif group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                        <a href="{{ route($key) }}" class="@if(Request::is(route($key) == '/admin' ? [substr(route($key, [], false), 1), substr(route($key, [], false), 1) . '/*'] : substr(route($key, [], false), 1))) bg-indigo-800 text-white @else text-white hover:bg-indigo-600 @endif group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                             {!! $value['icon'] !!} {{ $value['name'] }}
                         </a>
                     @endif
