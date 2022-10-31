@@ -16,13 +16,32 @@
         @livewireStyles
     </head>
     <body class="h-full">
-        <x-form method="post">
-            @csrf
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <x-form method="post">
+                @csrf
 
-            <x-input type="text" name="email" autocomplete="username"/>
-            <x-input type="password" name="password" autocomplete="password"/>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+                    <div class="mt-1">
+                        <x-input type="text" name="email"/>
+                    </div>
+                    @error('email')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
 
-            <button type="submit">Login</button>
-        </x-form>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <div class="mt-1">
+                        <x-input type="password" name="password"/>
+                    </div>
+                    @error('password')
+                     <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <button type="submit">Login</button>
+            </x-form>
+        </div>
     </body>
 </html>
